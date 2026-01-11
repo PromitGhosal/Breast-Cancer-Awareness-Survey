@@ -165,6 +165,14 @@
             box-shadow: var(--shadow-sm);
         }
 
+        .education-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 16px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
         .education-box h3 {
             color: var(--primary);
             font-size: 18px;
@@ -436,7 +444,8 @@
         // ============================================
         // CONFIGURATION - UPDATE THIS URL
         // ============================================
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcKwM_gojKhelMhGFQNqVdCzQdBpqDo9AFx441vIHTJTnziS3nkN6ivstbDf2EnaQ/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcKwM_gojKhelMhGFQNqVdCzQdBpqDo9AFx441vIHTJTnziS3nkN6ivstbDf2EnaQ/exec
+';
         // Instructions to get this URL are at the bottom of this file
         // ============================================
 
@@ -521,6 +530,7 @@
                     title: 'Understanding Breast Examination',
                     educationBox: {
                         title: '📘 What is Breast Examination?',
+                        image: 'images/breast-examination-steps.jpg',
                         content: [
                             'Breast examination means checking your breasts to find any lumps, changes, or problems early. Early detection helps in better treatment.',
                             '',
@@ -618,6 +628,7 @@
                     title: 'Understanding Breast Cancer',
                     educationBox: {
                         title: '📘 About Breast Cancer',
+                        image: 'images/farming-analogy.jpg',
                         content: [
                             'Breast cancer is an abnormal growth in the breast. Sometimes you CAN\'T feel a lump yourself - that\'s why regular check-ups are important.',
                             '',
@@ -771,6 +782,7 @@
                     title: 'Knowledge & Sharing',
                     educationBox: {
                         title: '📘 What To Do If You Find A Change',
+                        image: 'images/action-steps.jpg',
                         content: [
                             'Step 1: Don\'t panic - most changes are NOT cancer',
                             'Step 2: See a doctor within 2-3 weeks',
@@ -946,13 +958,27 @@
                             )}
 
                             <div className="impact-message">
-                                <h3>YOUR CONTRIBUTION MATTERS</h3>
+                                <h3>📘 YOUR CONTRIBUTION MATTERS</h3>
                                 <p>By completing this questionnaire, you have taken an important step in:</p>
                                 <ul style={{ textAlign: 'left', marginTop: '16px' }}>
                                     <li>✅ Increasing breast cancer awareness in your community</li>
                                     <li>✅ Helping us understand the real barriers women face</li>
-                                    <li>✅ Enabling us to design better health programs</li>
+                                    <li>✅ Enabling us to design better health programs that work for YOU</li>
                                     <li>✅ Contributing to early detection and saving lives</li>
+                                </ul>
+                                <p style={{ marginTop: '20px' }}><strong>Your honest answers will help us:</strong></p>
+                                <ul style={{ textAlign: 'left', marginTop: '12px' }}>
+                                    <li>• Bring health camps closer to where you live</li>
+                                    <li>• Create awareness programs that address YOUR concerns</li>
+                                    <li>• Train health workers to support women better</li>
+                                    <li>• Make breast cancer screening more accessible and comfortable</li>
+                                </ul>
+                                <p style={{ marginTop: '20px' }}><strong>Together, we can achieve our bigger goal:</strong></p>
+                                <ul style={{ textAlign: 'left', marginTop: '12px' }}>
+                                    <li>🎯 Detect breast cancer earlier</li>
+                                    <li>🎯 Save millions of women's lives</li>
+                                    <li>🎯 Reduce fear and stigma around breast health</li>
+                                    <li>🎯 Build healthier, stronger communities</li>
                                 </ul>
                             </div>
 
@@ -1018,6 +1044,13 @@
                         {currentSection.educationBox && (
                             <div className="education-box">
                                 <h3>{currentSection.educationBox.title}</h3>
+                                {currentSection.educationBox.image && (
+                                    <img 
+                                        src={currentSection.educationBox.image} 
+                                        alt={currentSection.educationBox.title}
+                                        onError={(e) => { e.target.style.display = 'none'; }}
+                                    />
+                                )}
                                 {currentSection.educationBox.content.map((line, idx) => (
                                     line === '' ? <br key={idx} /> : <p key={idx}>{line}</p>
                                 ))}
